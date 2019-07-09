@@ -1,3 +1,4 @@
+// load the thing we needed
 let express = require('express')
 let bodyParser = require('body-parser')
 let morgan = require('morgan')
@@ -16,6 +17,12 @@ mongoose.connect(secret.database, {useNewUrlParser: true}, (err)=>{
     }
 })
 
+
+// set the directory for static files
+app.use(express.static(__dirname + '/public'))
+
+// set the view engine to ejs
+app.set('view engine', 'ejs')
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(morgan('dev'))
