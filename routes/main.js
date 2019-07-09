@@ -1,5 +1,5 @@
 module.exports = (app)=>{
     app.get('/', (req, res, next)=>{
-        res.json('home')
+        res.render('main/home')
     })
 }
