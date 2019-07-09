@@ -3,6 +3,8 @@ let express = require('express')
 let bodyParser = require('body-parser')
 let morgan = require('morgan')
 let mongoose = require('mongoose')
+let ejs = require('ejs')
+let engine = require('ejs-mate')
 
 let app = express()
 
@@ -22,7 +24,9 @@ mongoose.connect(secret.database, {useNewUrlParser: true}, (err)=>{
 app.use(express.static(__dirname + '/public'))
 
 // set the view engine to ejs
+app.engine('ejs', engine)
 app.set('view engine', 'ejs')
+
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(morgan('dev'))
