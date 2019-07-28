@@ -1,11 +1,14 @@
 let mongoose = require("mongoose")
+let Schema = mongoose.Schema;
 
-let UserSchema = new mongoose.Schema({
+let UserSchema = new Schema({
     email: {
         type: String,
         unique: true,
         lowercase: true
     },
+    facebook: String,
+    token:Array, 
     
     profile: {
         name: {
