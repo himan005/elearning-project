@@ -5,6 +5,7 @@ let morgan = require('morgan')
 let mongoose = require('mongoose')
 let ejs = require('ejs')
 let engine = require('ejs-mate')
+let passport = require('passport')
 
 let app = express()
 
@@ -30,6 +31,8 @@ app.set('view engine', 'ejs')
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(morgan('dev'))
+app.use(passport.initialize())
+app.use(passport.session())
 
 require('./routes/main')(app)
 
