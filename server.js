@@ -6,6 +6,9 @@ let mongoose = require('mongoose')
 let ejs = require('ejs')
 let engine = require('ejs-mate')
 let passport = require('passport')
+let session = require('express-session')
+let cookieParser = require('cookie-parser')
+let MongoStore = require('connect-mongo')(session)
 
 let app = express()
 
@@ -31,6 +34,13 @@ app.set('view engine', 'ejs')
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(morgan('dev'))
+app.use(cookieParser())
+app.use(session({
+    resave: true,
+    saveUninitialized: true,
+    secret: secret.secretKey,
+    store: new MongoStore({url: secret.database, autoReconnect: true})
+}));
 app.use(passport.initialize())
 app.use(passport.session())
 
