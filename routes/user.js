@@ -4,7 +4,7 @@ let passportConf = require('../config/passport');
 module.exports = (app)=>{
 
     app.get('/login', (req, res, next)=>{
-        res.render('account/login');
+        res.render('accounts/login');
     });
 
     app.get('/auth/facebook', passport.authenticate('facebook', {scope: 'email'}));
