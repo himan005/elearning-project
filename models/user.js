@@ -8,8 +8,7 @@ let UserSchema = new Schema({
         lowercase: true
     },
     facebook: String,
-    token:Array, 
-    
+    tokens:Array, 
     profile: {
         name: {
             type: String,
