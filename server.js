@@ -45,6 +45,7 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 require('./routes/main')(app)
+require('./routes/user')(app)
 
 app.listen(secret.port, (err)=>{
     if(err){
